@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import "./App.css";
 
 function Header(props) {
@@ -64,6 +64,9 @@ function Main({ dishes, openStatus, onStatusChange }) {
 function App() {
   // const [status, setStatus] = useState(true); // refactor it through useReducer
   const [status, toggle] = useReducer((status) => !status, true);
+  useEffect(() => {
+    console.log("The restaurant log => ", status);
+  }, [status]);
   return (
     <div className="main_div">
       <h1>The restaurant is current {status ? "Open" : "Closed"}.</h1>
